@@ -19,4 +19,10 @@ public class Financeira {
     @Column(name = "fin_razaoSocial")
     private String razaoSocial;
 
+    @Column(name = "fin_email")
+    private String email;
+
+    @Column(name = "fin_telefone")
+    private String telefone;
+
 }
