@@ -11,7 +11,7 @@ import br.gov.fazenda.receita.leilao.entity.Endereco;
 import br.gov.fazenda.receita.leilao.service.EnderecoService;
 
 @RestController
-@RequestMapping(value = "/usuario")
+@RequestMapping(value = "/endereco")
 @CrossOrigin
 public class EnderecoController {
 
