@@ -18,7 +18,7 @@ public class FinanceiraController {
     @Autowired
     private FinanceiraService service;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{cnpj}")
     public Financeira buscarFinanceiraPorCnpj(@PathVariable("cnpj") Long cnpj){
 
         return service.buscarFinanceiraPorCnpj(cnpj);
