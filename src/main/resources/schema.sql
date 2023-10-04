@@ -18,3 +18,11 @@ create table end_endereco (
   end_cep int
 );
 
+create table fin_financeira (
+  fin_cnpj bigint not null PRIMARY KEY,
+  fin_nome varchar(100) not null,
+  fin_razaoSocial varchar(100) not null,
+  fin_email varchar(100) not null,
+  fin_telefone varchar(100) not null  
+);
+
