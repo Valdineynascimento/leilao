@@ -16,7 +16,8 @@ create table end_endereco (
   end_bairro varchar(150) not null,
   end_logradouro varchar(200) not null,
   end_numero int not null,
-  end_cep int
+  end_cep int,
+  end_complemento varchar(50)
 );
 
 create table fin_financeira (
