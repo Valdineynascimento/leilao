@@ -1,6 +1,8 @@
+drop table if exists lei_leilao;
 drop table if exists usr_usuario;
 drop table if exists end_endereco;
 drop table if exists fin_financeira;
+
 
 create table usr_usuario (
   usr_cpf bigint not null PRIMARY KEY,
@@ -13,9 +15,9 @@ create table end_endereco (
   end_id bigint not null PRIMARY KEY auto_increment,
   end_estado varchar(50) not null,
   end_cidade varchar(100) not null,
-  end_bairro varchar(150) not null,
+  end_bairro varchar(150),
   end_logradouro varchar(200) not null,
-  end_numero int not null,
+  end_numero int,
   end_cep int,
   end_complemento varchar(50)
 );
@@ -28,3 +30,11 @@ create table fin_financeira (
   fin_telefone varchar(100) not null  
 );
 
+create table lei_leilao (
+  lei_id bigint not null PRIMARY KEY,
+  lei_data_hora dateTime not null,
+  lei_data_visitacao date not null,
+  lei_descricao varchar(250) not null,
+  lei_end_id bigint not null,
+  foreign key (lei_end_id) references end_endereco (end_id)
+);
