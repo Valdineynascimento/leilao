@@ -9,9 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
 @Table(name = "lot_lote")
+@Data
 public class Lote implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -26,57 +28,5 @@ public class Lote implements Serializable{
 	
 	@Column(name = "lot_valorInicial")
 	private Double valorInicial;
-	
-	public Lote() {
-	}
-
-	public Lote(Long id, Double lance, Double valorInicial) {
-		super();
-		this.id = id;
-		this.lance = lance;
-		this.valorInicial = valorInicial;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Double getLance() {
-		return lance;
-	}
-
-	public void setLance(Double lance) {
-		this.lance = lance;
-	}
-
-	public Double getValorInicial() {
-		return valorInicial;
-	}
-
-	public void setValorInicial(Double valorInicial) {
-		this.valorInicial = valorInicial;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Lote other = (Lote) obj;
-		return Objects.equals(id, other.id);
-	}
-	
 	
 }

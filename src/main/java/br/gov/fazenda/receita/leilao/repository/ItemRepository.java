@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import br.gov.fazenda.receita.leilao.entity.Item;
 
-
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long>{
 

@@ -13,5 +13,9 @@ public interface ItemService {
 	public Item novoItem(Item item);
 	
 	public Item novoItem(String nome, String descricao);
+	
+	public Item atualizarItem(Item item);
+	
+	public void excluirItem(Long id);
 
 }

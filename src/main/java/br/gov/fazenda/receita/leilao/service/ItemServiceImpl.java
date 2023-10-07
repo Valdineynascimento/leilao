@@ -40,7 +40,15 @@ public class ItemServiceImpl implements ItemService {
         Item item = new Item();
         item.setNome(nome);
         item.setDescricao(descricao);
-        return novoItem(item);
+        return repo.save(item);	
+    }
+    
+    public Item atualizarItem(Item item) {
+    	return repo.save(item);
+    }
+    
+    public void excluirItem(Long id) {
+    	repo.deleteById(id);
     }
 
 }
