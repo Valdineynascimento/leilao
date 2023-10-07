@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.gov.fazenda.receita.leilao.entity.Item;
 import br.gov.fazenda.receita.leilao.entity.Lote;
 import br.gov.fazenda.receita.leilao.service.LoteService;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @CrossOrigin
@@ -25,17 +26,20 @@ public class LoteController {
 	private LoteService service;
 	
     @GetMapping
+    @Operation(summary = "BUSCAR LOTES", description = "BUSCAR TODOS LOTES", tags = {"/lote" })
     public List<Lote> buscarTodos() {
         return service.buscarTodos();
     }	
 	
 	@GetMapping(value="/{id}")
+	@Operation(summary = "BUSCAR LOTE", description = "BUSCAR LOTE POR ID", tags = {"/lote" })
 	public ResponseEntity<?> buscarPorId(@PathVariable Integer id)  {
 		Lote obj = service.buscarPorId(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
     @PostMapping
+    @Operation(summary = "INSERIR LOTE", description = "INSERIR NOVO LOTE", tags = {"/lote" })
     public Lote novoLote(@RequestBody Lote lote) {
         return service.novoLote(lote);
     }

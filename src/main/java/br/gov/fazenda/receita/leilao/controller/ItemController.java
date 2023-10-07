@@ -38,8 +38,8 @@ public class ItemController {
 		return ResponseEntity.ok().body(obj);
 	}	
 	
+	@PostMapping
 	@Operation(summary = "INSERIR ITEM", description = "INSERIR NOVO ITEM", tags = {"/item" })
-    @PostMapping
     public Item novoItem(@RequestBody Item item) {
         return service.novoItem(item);
     }
