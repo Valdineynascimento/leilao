@@ -13,34 +13,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.fazenda.receita.leilao.entity.Item;
-import br.gov.fazenda.receita.leilao.service.ItemService;
-import io.swagger.v3.oas.annotations.Operation;
+import br.gov.fazenda.receita.leilao.entity.Lote;
+import br.gov.fazenda.receita.leilao.service.LoteService;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/item")
-
-public class ItemController {
+@RequestMapping(value = "/lote")
+public class LoteController {
 	
 	@Autowired
-	private ItemService service;
+	private LoteService service;
 	
     @GetMapping
-    @Operation(summary = "BUSCAR ITENS", description = "BUSCAR TODOS ITENS", tags = {"/item" })
-    public List<Item> buscarTodos() {
+    public List<Lote> buscarTodos() {
         return service.buscarTodos();
-    }
+    }	
 	
 	@GetMapping(value="/{id}")
-	@Operation(summary = "BUSCAR ITEM", description = "BUSCAR ITEM POR ID", tags = {"/item" })
-	public ResponseEntity<?> buscarPorId(@PathVariable Long id)  {
-		Item obj = service.buscarPorId(id);
+	public ResponseEntity<?> buscarPorId(@PathVariable Integer id)  {
+		Lote obj = service.buscarPorId(id);
 		return ResponseEntity.ok().body(obj);
-	}	
+	}
 	
-	@Operation(summary = "INSERIR ITEM", description = "INSERIR NOVO ITEM", tags = {"/item" })
     @PostMapping
-    public Item novoItem(@RequestBody Item item) {
-        return service.novoItem(item);
+    public Lote novoLote(@RequestBody Lote lote) {
+        return service.novoLote(lote);
     }
+
 }
