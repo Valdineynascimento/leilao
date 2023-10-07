@@ -18,11 +18,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
     
-    @GetMapping
-    public String buscar() {
-        return "teste REST";
-    }
-
     @GetMapping(value = "/{cpf}")
     public Usuario buscarUsuarioPorId(@PathVariable("cpf") Long cpf) {
         return service.buscarUsuarioPorId(cpf);
