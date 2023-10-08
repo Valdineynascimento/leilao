@@ -1,5 +1,7 @@
 package br.gov.fazenda.receita.leilao.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,6 +47,12 @@ public class UsuarioController {
     @Operation(summary = "ATUALIZA USUARIO", description = "ATUALIZA INFORMAÇÕES USUARIO", tags = {"/usuario" })
     public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
         return service.novoUsuario(usuario);
+    }
+
+    @GetMapping
+    @Operation(summary = "BUSCA TODOS USUARIOS", description = "BUSCA TODOS OS USUARIOS CADASTRADOS", tags = {"/usuario" })
+    public List<Usuario> buscarTodosUsuarios() {
+        return service.buscarTodosUsuarios();
     }
     
 }

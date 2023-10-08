@@ -1,5 +1,6 @@
 package br.gov.fazenda.receita.leilao.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,34 +53,9 @@ public class UsuarioServiceImpl implements UsuarioService{
         return "Usuário com CPF " + cpf + " foi deletado com sucesso.";
     }
 
-    
-    /*@Transactional
-    public Usuario novoUsuario(Usuario usuario) {
-        if(usuario == null ||
-                usuario.getNome() == null ||
-                usuario.getNome().isBlank() || 
-                usuario.getSenha() == null ||
-                usuario.getSenha().isBlank()) {
-            throw new IllegalArgumentException("Usuário com atributos inválidos!");
-        }
-        if(!usuario.getAutorizacoes().isEmpty()) {
-            Set<Autorizacao> autorizacoes = new HashSet<Autorizacao>();
-            for(Autorizacao autorizacao: usuario.getAutorizacoes()) {
-                Autorizacao autorizacaoBd = buscarAutorizacaoPorId(autorizacao.getId());
-                autorizacoes.add(autorizacaoBd);
-            }
-            usuario.setAutorizacoes(autorizacoes);
-        }
-        Set<Anotacao> anotacoes = usuario.getAnotacoes();
-        usuario.setAnotacoes(new HashSet<Anotacao>());
-        usuario = usuarioRepo.save(usuario);
-        for(Anotacao anotacao: anotacoes) {
-            anotacao.setUsuario(usuario);
-            anotacao = anotacaoRepo.save(anotacao);
-            usuario.getAnotacoes().add(anotacao);
-        }
-        
-        return usuario;
-    }*/
-    
+    @Override
+    public List<Usuario> buscarTodosUsuarios() {
+        return usuarioRepo.findAll();
+    }
+
 }
