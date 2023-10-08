@@ -32,5 +32,8 @@ public class Endereco {
 
     @Column(name = "end_cep")
     private Integer cep;
+
+    @Column(name = "end_complemento")
+    private String complemento;
     
 }
