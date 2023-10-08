@@ -12,5 +12,4 @@ import br.gov.fazenda.receita.leilao.entity.Lote;
 public interface LoteRepository extends JpaRepository<Lote, Long>{
 
 	public Optional<Lote> findById(Integer id);
-
 }

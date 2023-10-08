@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.gov.fazenda.receita.leilao.entity.Item;
 import br.gov.fazenda.receita.leilao.entity.Lote;
 import br.gov.fazenda.receita.leilao.repository.LoteRepository;
 
@@ -15,7 +16,7 @@ public class LoteServiceImpl implements LoteService{
 	@Autowired
 	private LoteRepository repo;
 	
-	public Lote buscarTodos(Integer id) {
+	public Lote buscarTodos (Integer id) {
 		Optional<Lote> loteOp = repo.findById(id);
 		return loteOp.get();
 	}
@@ -26,7 +27,7 @@ public class LoteServiceImpl implements LoteService{
 	
 	
 	@Override
-	public Lote novoLote(Lote lote) {
+	public Lote novoLote (Lote lote) {
 	    if (lote == null || 
 	    		lote.getLance() == null || 
 	    		lote.getValorInicial() == null ||
@@ -38,7 +39,7 @@ public class LoteServiceImpl implements LoteService{
 	}
 
 	@Override
-	public Lote novoLote(Double lance, Double valorInicial) {
+	public Lote novoLote (Double lance, Double valorInicial) {
 	    if (lance == null || 
 	    		valorInicial == null || 
 	    		lance <= 0 || 
@@ -50,6 +51,14 @@ public class LoteServiceImpl implements LoteService{
 	    lote.setValorInicial(valorInicial);
 	    return novoLote(lote);
 	}
+	
+	public Lote atualizarLote (Lote lote) {
+    	return repo.save(lote);
+    }
+    
+    public void excluirLote (Long id) {
+    	repo.deleteById(id);
+    }
 
 	@Override
 	public Lote buscarPorId(Integer id) {
@@ -62,4 +71,17 @@ public class LoteServiceImpl implements LoteService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Item atualizarItem(Item item) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void excluirItem(Long id) {
+		// TODO Auto-generated method stub
+		
+	}	
+
 }
