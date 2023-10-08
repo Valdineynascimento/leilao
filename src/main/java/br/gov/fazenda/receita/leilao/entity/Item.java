@@ -1,7 +1,6 @@
 package br.gov.fazenda.receita.leilao.entity;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

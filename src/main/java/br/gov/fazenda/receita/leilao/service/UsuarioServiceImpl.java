@@ -1,6 +1,5 @@
 package br.gov.fazenda.receita.leilao.service;
 
-import java.util.HashSet;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
