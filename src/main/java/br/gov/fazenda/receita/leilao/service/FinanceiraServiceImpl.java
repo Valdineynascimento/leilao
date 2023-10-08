@@ -1,5 +1,6 @@
 package br.gov.fazenda.receita.leilao.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class FinanceiraServiceImpl implements FinanceiraService{
             throw new IllegalArgumentException("Financeira não encontrada!");
         }
         return financeiraOp.get();
+    }
+
+    @Override
+    public List<Financeira> buscarTodasFinanceiras(){
+        return financeiraRepo.findAll();
     }
     
 }
