@@ -41,8 +41,8 @@ create table lei_leilao (
 );
 
 create table itm_item (
-    itm_id bigint not null PRIMARY KEY auto_increment, 
-    itm_nome varchar(50),
-    itm_descricao varchar(100)
+  itm_id bigint not null PRIMARY KEY auto_increment, 
+  itm_nome varchar(50),
+  itm_descricao varchar(100)
 );
 
