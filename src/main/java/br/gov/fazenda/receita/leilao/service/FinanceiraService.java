@@ -12,4 +12,6 @@ public interface FinanceiraService {
 
     public Financeira novaFinanceira(Financeira financeira);
     
+    public String excluirFinanceiraPorId(Long cnpj);
+    
 }
