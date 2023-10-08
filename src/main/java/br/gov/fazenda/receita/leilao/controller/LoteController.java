@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.gov.fazenda.receita.leilao.entity.Item;
 import br.gov.fazenda.receita.leilao.entity.Lote;
 import br.gov.fazenda.receita.leilao.service.LoteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -48,17 +47,17 @@ public class LoteController {
     
 	@PutMapping(value="/{id}")
 	@Operation(summary = "ATUALIZAR LOTE", description = "ATUALIZAR LOTE PELO ID", tags = {"/lote" })
-	public ResponseEntity<Void> atualizarItem(@RequestBody Item item,@PathVariable Long id){
-		item.setId(id);
-		item = service.atualizarItem(item);
+	public ResponseEntity<Void> atualizarLote(@RequestBody Lote lote,@PathVariable Long id){
+		lote.setId(id);
+		lote = service.atualizarLote(lote);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@DeleteMapping(value="/{id}")
-	@Operation(summary = "DELETAR LOTE", description = "DELETAR LOTE PELO ID", tags = {"/lote" })
-	public ResponseEntity<Void> excluirItem(@PathVariable Long id)  {
-		service.excluirItem(id);
+	@Operation(summary = "EXCLUIR LOTE", description = "EXCLUIREXCLUIR LOTE PELO ID", tags = {"/lote" })
+	public ResponseEntity<Void> excluirLote(@PathVariable Long id)  {
+		service.excluirLote(id);
 		return ResponseEntity.noContent().build();
-	}    
+	}   
 
 }

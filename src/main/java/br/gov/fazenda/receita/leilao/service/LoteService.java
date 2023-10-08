@@ -2,7 +2,6 @@ package br.gov.fazenda.receita.leilao.service;
 
 import java.util.List;
 
-import br.gov.fazenda.receita.leilao.entity.Item;
 import br.gov.fazenda.receita.leilao.entity.Lote;
 
 public interface LoteService {
@@ -11,11 +10,12 @@ public interface LoteService {
 	
 	public List<Lote> buscarTodos();
 	
-	public Lote novoLote(Lote lote);
+	public Lote novoLote (Lote lote);
 	
-	public Lote novoLote(Double lance, Double valorInicial);
+	public Lote novoLote (Double lance, Double valorInicial);
 	
-	public Item atualizarItem(Item item);
+	public Lote atualizarLote (Lote lote);
 	
-	public void excluirItem(Long id);	
+	public void excluirLote (Long id);
+
 }
