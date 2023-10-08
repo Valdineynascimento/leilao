@@ -1,6 +1,7 @@
 drop table if exists lei_leilao;
 drop table if exists usr_usuario;
 drop table if exists end_endereco;
+drop table if exists itm_item;
 drop table if exists fin_financeira;
 
 
@@ -38,3 +39,10 @@ create table lei_leilao (
   lei_end_id bigint not null,
   foreign key (lei_end_id) references end_endereco (end_id)
 );
+
+create table itm_item (
+    itm_id bigint not null PRIMARY KEY auto_increment, 
+    itm_nome varchar(50),
+    itm_descricao varchar(100)
+);
+
