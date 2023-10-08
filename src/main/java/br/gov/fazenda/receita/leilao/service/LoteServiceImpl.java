@@ -16,21 +16,24 @@ public class LoteServiceImpl implements LoteService{
 	private LoteRepository repo;
 	
 	public Lote buscarPorId(Integer id) {
-		Optional<Lote> loteOp = repo.findById(id);
-		return loteOp.get();
+	    Optional<Lote> loteOp = repo.findById(id);
+	    if(loteOp.isEmpty()){
+            	throw new IllegalArgumentException("Lote não encontrado!");
+            }
+	    return loteOp.get();
 	}
 		
 	public List<Lote> buscarTodos () {
-		return repo.findAll();
+	    return repo.findAll();
 	}
 		
 	@Override
 	public Lote novoLote (Lote lote) {
 	    if (lote == null || 
-	    		lote.getLance() == null || 
-	    		lote.getValorInicial() == null ||
-	            lote.getLance() <= 0 || 
-	            lote.getValorInicial() <= 0) {
+	    	lote.getLance() == null || 
+	    	lote.getValorInicial() == null ||
+	        lote.getLance() <= 0 || 
+	        lote.getValorInicial() <= 0) {
 	        throw new IllegalArgumentException("Parâmetros inválidos!");
 	    }
 	    return repo.save(lote);
@@ -39,9 +42,9 @@ public class LoteServiceImpl implements LoteService{
 	@Override
 	public Lote novoLote (Double lance, Double valorInicial) {
 	    if (lance == null || 
-	    		valorInicial == null || 
-	    		lance <= 0 || 
-	    		valorInicial <= 0) {
+	    	valorInicial == null || 
+	    	lance <= 0 || 
+	    	valorInicial <= 0) {
 	        throw new IllegalArgumentException("Parâmetros inválidos!");
 	    }
 	    Lote lote = new Lote();
@@ -52,10 +55,10 @@ public class LoteServiceImpl implements LoteService{
 	
 	public Lote atualizarLote (Lote lote) {
     	return repo.save(lote);
-    }
+    	}
     
-    public void excluirLote (Long id) {
-    	repo.deleteById(id);
-    }
+    	public void excluirLote (Long id) {
+	    repo.deleteById(id);
+	}
 
 }
