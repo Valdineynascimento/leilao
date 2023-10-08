@@ -17,7 +17,7 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService service;
-
+    
     @GetMapping(value = "/{cpf}")
     public Usuario buscarUsuarioPorId(@PathVariable("cpf") Long cpf) {
         return service.buscarUsuarioPorId(cpf);
