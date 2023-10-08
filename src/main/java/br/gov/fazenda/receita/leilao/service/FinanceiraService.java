@@ -9,5 +9,7 @@ public interface FinanceiraService {
     public Financeira buscarFinanceiraPorCnpj(Long cnpj);
     
     public List<Financeira> buscarTodasFinanceiras();
+
+    public Financeira novaFinanceira(Financeira financeira);
     
 }
