@@ -42,6 +42,17 @@ public class UsuarioServiceImpl implements UsuarioService{
         return usuario;
     }
 
+    @Override
+    public String excluirUsuarioPorId(Long cpf) {
+        Optional<Usuario> usuarioOp = usuarioRepo.findById(cpf);
+        if(usuarioOp.isEmpty()){
+            throw new IllegalArgumentException("Usuario não encontrado!");
+        }
+        usuarioRepo.deleteById(cpf);
+        return "Usuário com CPF " + cpf + " foi deletado com sucesso.";
+    }
+
+    
     /*@Transactional
     public Usuario novoUsuario(Usuario usuario) {
         if(usuario == null ||

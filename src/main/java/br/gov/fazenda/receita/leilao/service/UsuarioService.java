@@ -7,5 +7,7 @@ public interface UsuarioService {
     public Usuario buscarUsuarioPorId(Long cpf);
 
     public Usuario novoUsuario(Usuario usuario);
-    
+
+    public String excluirUsuarioPorId(Long cpf);
+        
 }
