@@ -52,10 +52,12 @@ public class LeilaoServiceImpl implements LeilaoService{
 	    return novoLeilao(leilao);
 	}
 	
-	public Leilao atualizarLeilao (Leilao leilao) {
+	@Override
+    public Leilao atualizarLeilao (Leilao leilao) {
     	return leilaoRepo.save(leilao);
     }
     
+    @Override
     public void excluirLeilao (Long id) {
     	leilaoRepo.deleteById(id);    
     }

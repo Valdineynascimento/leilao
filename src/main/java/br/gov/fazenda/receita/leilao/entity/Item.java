@@ -22,6 +22,9 @@ public class Item implements Serializable{
 	@Column(name = "itm_id")
 	private Long id;
 
+	@Column(name = "itm_tipo")
+	private String tipo;
+
 	@Column(name = "itm_nome")
 	private String nome;
 

@@ -14,5 +14,7 @@ insert into lei_leilao (lei_id,lei_data_hora, lei_data_visitacao, lei_descricao,
     values (1, '2023-12-29T09:27:39', '2023-11-27', 'Este lei é um teste',1);
 insert into lei_leilao (lei_id,lei_data_hora, lei_data_visitacao, lei_descricao, lei_end_id)
     values (2, '2024-01-25T09:00:00', '2023-12-01', 'Este lei é um teste também',2);
-insert into itm_item (itm_nome,itm_descricao)
-    values ('Notebook','I5 7ª geração');
+insert into itm_item (itm_tipo, itm_nome, itm_descricao)
+    values ('INFORMATICA', 'Notebook', 'I5 7ª geração');
+insert into itm_item (itm_tipo, itm_nome, itm_descricao)
+    values ('VEICULO', 'Corsa', 'Super, 5 portas, 96/97');

@@ -15,11 +15,13 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private ItemRepository repo;
 	
+    @Override
 	public Item buscarPorId(Long id) {
 		Optional<Item> itemOp = repo.findById(id);
 		return itemOp.get();
 	}
 	
+    @Override
 	public List<Item> buscarTodos() {
 		return repo.findAll();
 	}
@@ -36,17 +38,20 @@ public class ItemServiceImpl implements ItemService {
     }	
 	
     @Override
-    public Item novoItem(String nome, String descricao) {
+    public Item novoItem(String tipo, String nome, String descricao) {
         Item item = new Item();
+        item.setTipo(tipo);
         item.setNome(nome);
         item.setDescricao(descricao);
         return repo.save(item);	
     }
     
+    @Override
     public Item atualizarItem(Item item) {
     	return repo.save(item);
     }
     
+    @Override
     public void excluirItem(Long id) {
     	repo.deleteById(id);
     }

@@ -15,11 +15,13 @@ public class LoteServiceImpl implements LoteService{
 	@Autowired
 	private LoteRepository repo;
 	
+	@Override
 	public Lote buscarPorId(Integer id) {
 		Optional<Lote> loteOp = repo.findById(id);
 		return loteOp.get();
 	}
-		
+	
+	@Override
 	public List<Lote> buscarTodos () {
 		return repo.findAll();
 	}
@@ -50,11 +52,13 @@ public class LoteServiceImpl implements LoteService{
 	    return novoLote(lote);
 	}
 	
+	@Override
 	public Lote atualizarLote (Lote lote) {
     	return repo.save(lote);
     }
     
-    public void excluirLote (Long id) {
+    @Override
+	public void excluirLote (Long id) {
     	repo.deleteById(id);
     }
 

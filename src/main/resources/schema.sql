@@ -34,6 +34,7 @@ create table fin_financeira (
 
 create table itm_item (
     itm_id bigint not null PRIMARY KEY auto_increment, 
+    itm_tipo varchar(50),
     itm_nome varchar(50),
     itm_descricao varchar(100)
 );
