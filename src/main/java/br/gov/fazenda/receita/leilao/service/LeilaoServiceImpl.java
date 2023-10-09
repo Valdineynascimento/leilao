@@ -1,5 +1,7 @@
 package br.gov.fazenda.receita.leilao.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +25,38 @@ public class LeilaoServiceImpl implements LeilaoService{
         return leilaoOp.get();
     }
     
+	@Override
+	public Leilao novoLeilao (Leilao leilao) {
+	    if (leilao == null || 
+	    		leilao.getDataInicial() == null || 
+	    		leilao.getDataVisitacao() == null ||
+	            leilao.getDescricao() == null || 
+	            leilao.getDescricao() == "") {
+	        throw new IllegalArgumentException("Parâmetros inválidos!");
+	    }
+	    return leilaoRepo.save(leilao);
+	}
+
+	@Override
+	public Leilao novoLeilao (LocalDateTime dataInicial, LocalDate dataVisitacao,String descricao) {
+	    if (dataInicial == null || 
+	    	dataVisitacao == null || 
+	    	descricao  == null || 
+	    	descricao == "") {
+	        throw new IllegalArgumentException("Parâmetros inválidos!");
+	    }
+	    Leilao leilao = new Leilao();
+	    leilao.setDataInicial(dataInicial);
+	    leilao.setDataVisitacao(dataVisitacao);
+	    leilao.setDescricao(descricao);
+	    return novoLeilao(leilao);
+	}
+	
+	public Leilao atualizarLeilao (Leilao leilao) {
+    	return leilaoRepo.save(leilao);
+    }
+    
+    public void excluirLeilao (Long id) {
+    	leilaoRepo.deleteById(id);    
+    }
 }
