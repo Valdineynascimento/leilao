@@ -40,11 +40,9 @@ create table itm_item (
 );
 
 create table lot_lote(
-    lot_id bigint not null PRIMARY KEY,
+    lot_id bigint not null PRIMARY KEY auto_increment,
     lot_lance float not null,
-    lot_valorInicial float not null,
-    lot_itm_id bigint not null,
-    foreign key (lot_itm_id) references itm_item (itm_id)
+    lot_valor_inicial float not null
 );
 
 create table lei_leilao (
@@ -52,10 +50,7 @@ create table lei_leilao (
     lei_data_hora dateTime not null,
     lei_data_visitacao date not null,
     lei_descricao varchar(250) not null,
-    lei_end_id bigint not null,
-    lei_lot_id  bigint,
-    foreign key (lei_end_id) references end_endereco (end_id),
-    foreign key (lei_lot_id) references lot_lote (lot_id)
+    lei_end_id bigint not null
 );
 
 

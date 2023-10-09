@@ -18,3 +18,5 @@ insert into itm_item (itm_tipo, itm_nome, itm_descricao)
     values ('INFORMATICA', 'Notebook', 'I5 7ª geração');
 insert into itm_item (itm_tipo, itm_nome, itm_descricao)
     values ('VEICULO', 'Corsa', 'Super, 5 portas, 96/97');
+insert into lot_lote (lot_id, lot_lance, lot_valor_inicial)
+    values (1, 1500.00, 1300.00);

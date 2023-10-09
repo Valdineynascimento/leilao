@@ -22,10 +22,10 @@ public class Lote implements Serializable{
 	@Column(name = "lot_id")
 	private Long id;
 	
-	@Column(name = "lot_lace")
+	@Column(name = "lot_lance")
 	private Double lance;
 	
-	@Column(name = "lot_valorInicial")
+	@Column(name = "lot_valor_inicial")
 	private Double valorInicial;
 	
 }
