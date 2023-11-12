@@ -17,7 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public abstract class Veiculo extends Item{
+public abstract class Veiculo/* extends Item*/{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

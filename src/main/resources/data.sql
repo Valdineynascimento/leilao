@@ -14,9 +14,11 @@ insert into lei_leilao (lei_id,lei_data_hora, lei_data_visitacao, lei_descricao)
     values (1, '2023-12-29T09:27:39', '2023-11-27', 'Este lei é um teste');
 insert into lei_leilao (lei_id,lei_data_hora, lei_data_visitacao, lei_descricao)
     values (2, '2024-01-25T09:00:00', '2023-12-01', 'Este lei é um teste também');
-insert into itm_item (itm_tipo, itm_nome, itm_descricao)
-    values ('INFORMATICA', 'Notebook', 'I5 7ª geração');
-insert into itm_item (itm_tipo, itm_nome, itm_descricao)
-    values ('VEICULO', 'Corsa', 'Super, 5 portas, 96/97');
 insert into lot_lote (lot_id, lot_lance, lot_valor_inicial)
     values (1, 1500.00, 1300.00);
+insert into lot_lote (lot_id, lot_lance, lot_valor_inicial)
+    values (2, 9000.00, 7500.00);
+insert into itm_item (itm_tipo, itm_nome, itm_descricao, itm_lot_id)
+    values ('INFORMATICA', 'Notebook', 'I5 7ª geração',2);
+insert into itm_item (itm_tipo, itm_nome, itm_descricao, itm_lot_id)
+    values ('VEICULO', 'Corsa', 'Super, 5 portas, 96/97',1);

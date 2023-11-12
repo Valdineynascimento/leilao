@@ -1,12 +1,14 @@
 package br.gov.fazenda.receita.leilao.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -27,5 +29,8 @@ public class Lote implements Serializable{
 	
 	@Column(name = "lot_valor_inicial")
 	private Double valorInicial;
+
+	@OneToMany(mappedBy = "lote")
+	private Set<Item> itens; 
 	
 }

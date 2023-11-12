@@ -53,17 +53,19 @@ create table end_endereco (
     foreign key (end_lei_id) references lei_leilao(lei_id)
 );
 
-create table itm_item (
-    itm_id bigint not null PRIMARY KEY auto_increment, 
-    itm_tipo varchar(50),
-    itm_nome varchar(50),
-    itm_descricao varchar(100)
-);
-
 create table lot_lote(
     lot_id bigint not null PRIMARY KEY auto_increment,
     lot_lance float not null,
     lot_valor_inicial float not null
+);
+
+create table itm_item (
+    itm_id bigint not null PRIMARY KEY auto_increment, 
+    itm_tipo varchar(50),
+    itm_nome varchar(50),
+    itm_descricao varchar(100),
+    itm_lot_id bigint not null,
+    foreign key (itm_lot_id) references lot_lote(lot_id)
 );
 
 create table car_carro (
