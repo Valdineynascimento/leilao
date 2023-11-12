@@ -3,13 +3,11 @@ package br.gov.fazenda.receita.leilao.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -31,9 +29,7 @@ public class Leilao {
     @Column(name = "lei_descricao")
     private String descricao;
     
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "lei_end_id")
+    @OneToOne(mappedBy = "leilao")
     private Endereco endereco;
 
 }
