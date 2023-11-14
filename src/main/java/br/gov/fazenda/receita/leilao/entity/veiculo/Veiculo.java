@@ -1,6 +1,6 @@
 package br.gov.fazenda.receita.leilao.entity.veiculo;
 
-import br.gov.fazenda.receita.leilao.entity.Item;
+//import br.gov.fazenda.receita.leilao.entity.Item;
 //import br.gov.fazenda.receita.leilao.entity.Item;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

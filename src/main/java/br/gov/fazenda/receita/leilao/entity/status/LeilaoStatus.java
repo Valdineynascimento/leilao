@@ -5,13 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public enum LeilaoStatus {
     
-    ABERTO("Em aberto"),
-    ANDAMENTO("Em andamento"),
-    FECHADO("Fechado");
+    EM_ABERTO("Em Aberto"),
+    EM_ANDAMENTO("Em Andamento"),
+    FINALIZADO("Fechado");
 
     private String status;
+
 }

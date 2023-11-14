@@ -1,11 +1,11 @@
 drop table if exists end_endereco;
-drop table if exists lei_leilao;
 drop table if exists car_carro;
 drop table if exists mot_motocicleta;
 drop table if exists uti_utilitario;
 drop table if exists cam_caminhao;
 drop table if exists itm_item;
 drop table if exists lot_lote;
+drop table if exists lei_leilao;
 drop table if exists usr_usuario;
 drop table if exists fin_financeira;
 --drop table if exists end_endereco;
@@ -32,7 +32,8 @@ create table lei_leilao (
     lei_id bigint not null PRIMARY KEY,
     lei_data_hora dateTime not null,
     lei_data_visitacao date not null,
-    lei_descricao varchar(250) not null
+    lei_descricao varchar(250) not null,
+    lei_status varchar(50) not null
     --lei_end_id bigint not null
 );
 
@@ -56,7 +57,9 @@ create table end_endereco (
 create table lot_lote(
     lot_id bigint not null PRIMARY KEY auto_increment,
     lot_lance float not null,
-    lot_valor_inicial float not null
+    lot_valor_inicial float not null,
+    lot_lei_id bigint not null,
+    foreign key (lot_lei_id) references lei_leilao(lei_id)
 );
 
 create table itm_item (
