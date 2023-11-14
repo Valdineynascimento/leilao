@@ -2,12 +2,15 @@ package br.gov.fazenda.receita.leilao.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.gov.fazenda.receita.leilao.entity.Item;
 import br.gov.fazenda.receita.leilao.entity.Leilao;
+import br.gov.fazenda.receita.leilao.repository.ItemRepository;
 import br.gov.fazenda.receita.leilao.repository.LeilaoRepository;
 
 @Service
@@ -15,6 +18,9 @@ public class LeilaoServiceImpl implements LeilaoService{
 
     @Autowired
     private LeilaoRepository leilaoRepo;
+
+	@Autowired 
+    private ItemRepository itemRepo;
 
     @Override
     public Leilao buscarLeilaoPorId(Long id) {
@@ -61,4 +67,14 @@ public class LeilaoServiceImpl implements LeilaoService{
     public void excluirLeilao (Long id) {
     	leilaoRepo.deleteById(id);    
     }
+
+	@Override
+    public List<Item> buscarItensPorLeilaoOrdenadosPorNome(Long idLeilao) {
+        return itemRepo.findAllByLoteLeilaoIdOrderByNome(idLeilao);
+    }
+
+	@Override
+	public List<Leilao> buscarTodosLeiloesOrdenadosPorDataInicial() {
+		return leilaoRepo.findAllByOrderByDataInicial();
+	}
 }

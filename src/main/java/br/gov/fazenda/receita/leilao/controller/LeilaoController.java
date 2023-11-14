@@ -1,5 +1,7 @@
 package br.gov.fazenda.receita.leilao.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.gov.fazenda.receita.leilao.entity.Item;
 import br.gov.fazenda.receita.leilao.entity.Leilao;
 import br.gov.fazenda.receita.leilao.service.LeilaoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,6 +26,7 @@ public class LeilaoController {
 
     @Autowired
     private LeilaoService service;
+
 
     @GetMapping(value = "/{id}")
     @Operation(summary = "BUSCAR LEILAO", description = "BUSCAR LEILAO POR ID", tags = {"/leilao" })
@@ -49,7 +53,18 @@ public class LeilaoController {
 	public ResponseEntity<Void> excluirLeilao(@PathVariable Long id)  {
 		service.excluirLeilao(id);
 		return ResponseEntity.noContent().build();
-	}   
+	}  
+	
+	@GetMapping(value = "/{idLeilao}/itens")
+    @Operation(summary = "BUSCAR ITENS DE LEILAO ORDENADOS", description = "BUSCAR ITENS DE LEILAO ORDENADOS POR NOME", tags = {"/leilao" })
+    public List<Item> buscarItensPorLeilaoOrdenadosPorNome(@PathVariable("idLeilao") Long idLeilao){
+        return service.buscarItensPorLeilaoOrdenadosPorNome(idLeilao);
+    }
 
+	@GetMapping(value = "/todos")
+    @Operation(summary = "BUSCAR TODOS LEILOES ORDENADOS POR OCORRENCIA", description = "BUSCAR TODOS LEILOES ORDENADOS POR OCORRENCIA", tags = {"/leilao" })
+    public List<Leilao> buscarTodosLeiloesOrdenadosPorOcorrencia(){
+		return service.buscarTodosLeiloesOrdenadosPorDataInicial();
+	}
     
 }
