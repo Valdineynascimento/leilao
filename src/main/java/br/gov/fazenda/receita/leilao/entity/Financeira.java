@@ -1,8 +1,13 @@
 package br.gov.fazenda.receita.leilao.entity;
 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -30,5 +35,9 @@ public class Financeira {
 
     @OneToOne(mappedBy = "financeira")
     private Endereco endereco;
+
+    //@JsonIgnore
+    @OneToMany(mappedBy = "financeira")
+	private Set<Leilao> leiloes;
 
 }

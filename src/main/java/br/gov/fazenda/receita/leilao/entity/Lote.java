@@ -3,6 +3,8 @@ package br.gov.fazenda.receita.leilao.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,6 +38,7 @@ public class Lote implements Serializable{
 	@OneToMany(mappedBy = "lote")
 	private Set<Item> itens; 
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "lot_lei_id")
 	private Leilao leilao;

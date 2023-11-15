@@ -33,7 +33,9 @@ create table lei_leilao (
     lei_data_hora dateTime not null,
     lei_data_visitacao date not null,
     lei_descricao varchar(250) not null,
-    lei_status varchar(50) not null
+    lei_status varchar(50) not null,
+    lei_fin_id bigint not null,
+    foreign key (lei_fin_id) references fin_financeira(fin_cnpj)
     --lei_end_id bigint not null
 );
 
