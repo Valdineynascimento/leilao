@@ -11,10 +11,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "swi_switch_dispositivo")
-public class SwitchDispositivo extends DispositivosInformatica{
+@Table(name = "rot_roteador")
+public class Roteador extends DispositivosInformatica{
 
-    @Column(name = "swi_numero_portas")
-    private Integer numeroPortas;
+    @Column(name = "rot_frequencia")
+    private Double frequencia;
     
 }
