@@ -1,3 +1,4 @@
+drop table if exists lan_lance;
 drop table if exists end_endereco;
 drop table if exists car_carro;
 drop table if exists mot_motocicleta;
@@ -14,14 +15,16 @@ drop table if exists fin_financeira;
 
 
 create table usr_usuario (
-    usr_cpf bigint not null PRIMARY KEY,
+    usr_id bigint PRIMARY KEY auto_increment,
+    usr_cpf varchar(20) not null unique,
     usr_nome varchar(100) not null,
     usr_email varchar(100) not null,
     usr_telefone varchar(100) not null  
 );
 
 create table fin_financeira (
-    fin_cnpj bigint not null PRIMARY KEY,
+    fin_id bigint not null PRIMARY KEY auto_increment,
+    fin_cnpj varchar(25) not null unique,
     fin_nome varchar(100) not null,
     fin_razao_social varchar(100) not null,
     fin_email varchar(100) not null,
@@ -29,13 +32,13 @@ create table fin_financeira (
 );
 
 create table lei_leilao (
-    lei_id bigint not null PRIMARY KEY,
+    lei_id bigint not null PRIMARY KEY auto_increment,
     lei_data_hora dateTime not null,
     lei_data_visitacao date not null,
     lei_descricao varchar(250) not null,
     lei_status varchar(50) not null,
     lei_fin_id bigint not null,
-    foreign key (lei_fin_id) references fin_financeira(fin_cnpj)
+    foreign key (lei_fin_id) references fin_financeira(fin_id)
     --lei_end_id bigint not null
 );
 
@@ -51,8 +54,8 @@ create table end_endereco (
     end_usr_id bigint,
     end_fin_id bigint,
     end_lei_id bigint,
-    foreign key (end_usr_id) references usr_usuario(usr_cpf),
-    foreign key (end_fin_id) references fin_financeira(fin_cnpj),
+    foreign key (end_usr_id) references usr_usuario(usr_id),
+    foreign key (end_fin_id) references fin_financeira(fin_id),
     foreign key (end_lei_id) references lei_leilao(lei_id)
 );
 
@@ -65,12 +68,23 @@ create table lot_lote(
 );
 
 create table itm_item (
-    itm_id bigint not null PRIMARY KEY auto_increment, 
+    itm_id bigint PRIMARY KEY auto_increment, 
     itm_tipo varchar(50),
     itm_nome varchar(50),
     itm_descricao varchar(100),
+    itm_maior_lance float,
     itm_lot_id bigint not null,
     foreign key (itm_lot_id) references lot_lote(lot_id)
+);
+
+create table lan_lance (
+    lan_id bigint PRIMARY KEY auto_increment,
+    lan_valor float not null,
+    lan_data_hora dateTime,
+    lan_itm_id bigint not null,
+    lan_usr_id bigint not null,
+    foreign key (lan_itm_id) references itm_item(itm_id),
+    foreign key (lan_usr_id) references usr_usuario(usr_id)
 );
 
 create table car_carro (
@@ -83,7 +97,7 @@ create table car_carro (
     --FOREIGN KEY (car_id) REFERENCES veiculo (id)
 );
 
-CREATE TABLE mot_motocicleta (
+create table mot_motocicleta (
     mot_id bigint PRIMARY KEY,
     mot_marca varchar(150) not null,
     mot_modelo varchar(150) not null,
@@ -92,7 +106,7 @@ CREATE TABLE mot_motocicleta (
     mot_cilindrada int
 );
 
-CREATE TABLE uti_utilitario (
+create table uti_utilitario (
     uti_id bigint PRIMARY KEY,
     uti_marca varchar(150) not null,
     uti_modelo varchar(150) not null,
@@ -101,7 +115,7 @@ CREATE TABLE uti_utilitario (
     uti_capacidade_carga DOUBLE
 );
 
-CREATE TABLE cam_caminhao (
+create table cam_caminhao (
     cam_id bigint PRIMARY KEY,
     cam_capacidade_carga DOUBLE,
     cam_marca varchar(150),
@@ -110,3 +124,4 @@ CREATE TABLE cam_caminhao (
     cam_combustivel varchar(100),
     cam_numero_eixo int
 );
+

@@ -25,10 +25,10 @@ public class FinanceiraController {
     @Autowired
     private FinanceiraService service;
 
-    @GetMapping(value = "/{cnpj}")
+    @GetMapping(value = "/{id}")
     @Operation(summary = "BUSCA FINANCEIRA", description = "BUSCA UMA NOVA FINANCEIRA PELO CNPJ", tags = {"/financeira" })
-    public Financeira buscarFinanceiraPorCnpj(@PathVariable("cnpj") Long cnpj){
-        return service.buscarFinanceiraPorCnpj(cnpj);
+    public Financeira buscarFinanceiraPorCnpj(@PathVariable("id") Long id){
+        return service.buscarFinanceiraPorId(id);
     }
 
     @PostMapping
@@ -37,10 +37,10 @@ public class FinanceiraController {
         return service.novaFinanceira(financeira);
     }
 
-    @DeleteMapping(value = "/{cnpj}")
+    @DeleteMapping(value = "/{id}")
     @Operation(summary = "EXCLUI FINANCEIRA", description = "EXCLUI FINANCEIRA PELO CNPJ INFORMADA", tags = {"/financeira" })
-    public String excluirFinanceiraPorId(@PathVariable("cnpj") Long cnpj){
-        return service.excluirFinanceiraPorId(cnpj);
+    public void excluirFinanceiraPorCnpj(@PathVariable("id") Long id){
+        service.excluirFinanceiraPorId(id);
     }
 
     @PutMapping

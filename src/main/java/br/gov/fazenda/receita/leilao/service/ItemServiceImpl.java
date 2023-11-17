@@ -43,16 +43,7 @@ public class ItemServiceImpl implements ItemService {
         }
         return repo.save(item);
     }	
-	
-    /*@Override
-    public Item novoItem(String tipo, String nome, String descricao) {
-        Item item = new Item();
-        item.setTipo(tipo);
-        item.setNome(nome);
-        item.setDescricao(descricao);
-        return repo.save(item);	
-    }*/
-    
+	   
     @Override
     public Item atualizarItem(Item item) {
     	return repo.save(item);
@@ -69,11 +60,8 @@ public class ItemServiceImpl implements ItemService {
         if(loteOp.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lote inexistente!");
         }
-        Item item = new Item();
-        item.setTipo(tipo);
-        item.setNome(nome);
-        item.setDescricao(descricao);
-        item.setLote(loteOp.get());
+        Item item = new Item(tipo, nome, descricao, loteOp.get());
+       
         return repo.save(item);
     } 
 

@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -18,8 +20,12 @@ import lombok.Data;
 public class Financeira {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "fin_id")
+    private Long id;
+
     @Column(name = "fin_cnpj")
-    private Long cnpj;
+    private String cnpj;
 
     @Column(name = "fin_nome")
     private String nome;
@@ -36,7 +42,7 @@ public class Financeira {
     @OneToOne(mappedBy = "financeira")
     private Endereco endereco;
 
-    //@JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "financeira")
 	private Set<Leilao> leiloes;
 

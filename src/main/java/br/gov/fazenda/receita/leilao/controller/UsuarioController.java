@@ -27,8 +27,8 @@ public class UsuarioController {
     
     @GetMapping(value = "/{cpf}")
     @Operation(summary = "BUSCA USUARIO", description = "BUSCA USUARIO PELO CPF INFORMADO", tags = {"/usuario" })
-    public Usuario buscarUsuarioPorId(@PathVariable("cpf") Long cpf) {
-        return service.buscarUsuarioPorId(cpf);
+    public Usuario buscarUsuarioPorCpf(@PathVariable("cpf") String cpf) {
+        return service.buscarUsuarioPorCpf(cpf);
     }
 
     @PostMapping
@@ -39,8 +39,8 @@ public class UsuarioController {
 
     @DeleteMapping(value = "/{cpf}")
     @Operation(summary = "EXCLUI USUARIO", description = "EXCLUI USUARIO PELO CPF INFORMADO", tags = {"/usuario" })
-    public String excluirUsuarioPorId(@PathVariable("cpf") Long cpf){
-        return service.excluirUsuarioPorId(cpf);
+    public String excluirUsuarioPorCpf(@PathVariable("cpf") String cpf){
+        return service.excluirUsuarioPorCpf(cpf);
     }
 
     @PutMapping

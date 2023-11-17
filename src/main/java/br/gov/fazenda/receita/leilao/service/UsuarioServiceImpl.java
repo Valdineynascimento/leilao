@@ -17,8 +17,8 @@ public class UsuarioServiceImpl implements UsuarioService{
     private UsuarioRepository usuarioRepo;
 
     @Override
-    public Usuario buscarUsuarioPorId(Long cpf) {
-        Optional<Usuario> usuarioOp = usuarioRepo.findById(cpf);
+    public Usuario buscarUsuarioPorCpf(String cpf) {
+        Optional<Usuario> usuarioOp = usuarioRepo.findByCpf(cpf);
         if(usuarioOp.isEmpty()){
             throw new IllegalArgumentException("Usuario não encontrado!");
         }
@@ -29,6 +29,8 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public Usuario novoUsuario(Usuario usuario) {
         if(usuario == null ||
+                usuario.getCpf() == null ||
+                usuario.getCpf().isBlank() ||        
                 usuario.getNome() == null ||
                 usuario.getNome().isBlank() || 
                 usuario.getEmail() == null ||
@@ -43,13 +45,14 @@ public class UsuarioServiceImpl implements UsuarioService{
         return usuario;
     }
 
+    @Transactional
     @Override
-    public String excluirUsuarioPorId(Long cpf) {
-        Optional<Usuario> usuarioOp = usuarioRepo.findById(cpf);
+    public String excluirUsuarioPorCpf(String cpf) {
+        Optional<Usuario> usuarioOp = usuarioRepo.findByCpf(cpf);
         if(usuarioOp.isEmpty()){
             throw new IllegalArgumentException("Usuario não encontrado!");
         }
-        usuarioRepo.deleteById(cpf);
+        usuarioRepo.deleteByCpf(cpf);
         return "Usuário com CPF " + cpf + " foi deletado com sucesso.";
     }
 

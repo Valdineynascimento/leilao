@@ -6,12 +6,12 @@ import br.gov.fazenda.receita.leilao.entity.Financeira;
 
 public interface FinanceiraService {
 
-    public Financeira buscarFinanceiraPorCnpj(Long cnpj);
+    public Financeira buscarFinanceiraPorId(Long id);
     
     public List<Financeira> buscarTodasFinanceiras();
 
     public Financeira novaFinanceira(Financeira financeira);
     
-    public String excluirFinanceiraPorId(Long cnpj);
+    public void excluirFinanceiraPorId(Long id);
     
 }

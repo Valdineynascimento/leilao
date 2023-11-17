@@ -14,5 +14,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>{
 
     @Query("SELECT i FROM Item i WHERE i.lote.leilao.id = :idLeilao ORDER BY i.nome")
     List<Item> findAllByLoteLeilaoIdOrderByNome(@Param("idLeilao") Long idLeilao);
+
+    
 }
 

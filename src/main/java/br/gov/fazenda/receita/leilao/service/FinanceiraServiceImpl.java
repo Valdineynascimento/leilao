@@ -16,8 +16,8 @@ public class FinanceiraServiceImpl implements FinanceiraService{
     private FinanceiraRepository financeiraRepo;
     
     @Override
-    public Financeira buscarFinanceiraPorCnpj(Long cnpj) {
-        Optional<Financeira> financeiraOp = financeiraRepo.findById(cnpj);
+    public Financeira buscarFinanceiraPorId(Long id) {
+        Optional<Financeira> financeiraOp = financeiraRepo.findById(id);
         if(financeiraOp.isEmpty()){
             throw new IllegalArgumentException("Financeira não encontrada!");
         }
@@ -49,13 +49,12 @@ public class FinanceiraServiceImpl implements FinanceiraService{
     }
 
     @Override
-    public String excluirFinanceiraPorId(Long cnpj) {
-        Optional<Financeira> financeiraOp = financeiraRepo.findById(cnpj);
+    public void excluirFinanceiraPorId(Long id) {
+        Optional<Financeira> financeiraOp = financeiraRepo.findById(id);
         if(financeiraOp.isEmpty()){
             throw new IllegalArgumentException("Financeira não encontrada!");
         }
-        financeiraRepo.deleteById(cnpj);
-        return "Financeira com CNPJ " + cnpj + " foi deletada com sucesso.";
+        financeiraRepo.deleteById(id);
     }
     
 }

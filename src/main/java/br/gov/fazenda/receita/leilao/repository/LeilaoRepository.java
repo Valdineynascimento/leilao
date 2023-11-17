@@ -8,4 +8,6 @@ import br.gov.fazenda.receita.leilao.entity.Leilao;
 public interface LeilaoRepository extends JpaRepository<Leilao, Long>{
     
     List<Leilao> findAllByOrderByDataInicial();
+
+    
 }

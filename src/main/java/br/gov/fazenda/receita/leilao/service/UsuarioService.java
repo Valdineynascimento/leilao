@@ -6,11 +6,11 @@ import br.gov.fazenda.receita.leilao.entity.Usuario;
 
 public interface UsuarioService {
 
-    public Usuario buscarUsuarioPorId(Long cpf);
+    public Usuario buscarUsuarioPorCpf(String cpf);
 
     public Usuario novoUsuario(Usuario usuario);
 
-    public String excluirUsuarioPorId(Long cpf);
+    public String excluirUsuarioPorCpf(String cpf);
 
     public List<Usuario> buscarTodosUsuarios();
         
