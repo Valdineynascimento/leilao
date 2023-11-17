@@ -11,14 +11,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "not_notebook")
-public class Notebook extends DispositivosInformatica{
+@Table(name = "mon_monitor")
+public class Monitor extends DispositivosInformatica{
 
-    @Column(name = "not_marca")
-    private String marca;
+    @Column(name = "mon_tipo_tela")
+    private String tipoTela;
 
-    @Column(name = "not_memoria_ram")
-    private Integer memoriaRam;
+    @Column(name = "mon_tamanho")
+    private Double tamanho;
     
 }
 
