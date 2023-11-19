@@ -47,7 +47,7 @@ public class Leilao {
     private Endereco endereco;
 
     @OneToMany(mappedBy = "leilao")
-	private Set<Lote> lotes;
+	private Set<Item> itens;
     
     @ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name = "lei_fin_id")

@@ -40,11 +40,11 @@ public class ItemController {
 		return ResponseEntity.ok().body(obj);
 	}	
 	
-	@PostMapping
+	/*@PostMapping
 	@Operation(summary = "INSERIR ITEM", description = "INSERIR NOVO ITEM", tags = {"/item" })
     public Item novoItem(@RequestBody Item item) {
         return service.novoItem(item);
-    }
+    }*/
 	
 	@PutMapping(value="/{id}")
 	@Operation(summary = "ATUALIZAR ITEM", description = "ATUALIZAR ITEM PELO ID", tags = {"/item" })

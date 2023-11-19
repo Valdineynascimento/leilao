@@ -10,11 +10,11 @@ public interface ItemService {
 	
 	public List<Item> buscarTodos();
 
-	public Item novoItem(Item item);
+	//public Item novoItem(Item item);
 	
 	//public Item novoItem(String tipo, String nome, String descricao);
 
-	public Item novoItem(String tipo, String nome, String descricao, Long idLote);
+	//public Item novoItem(String tipo, String nome, String descricao, Long idLote);
 	
 	public Item atualizarItem(Item item);
 	

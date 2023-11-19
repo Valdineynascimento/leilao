@@ -1,9 +1,10 @@
 package br.gov.fazenda.receita.leilao.entity.veiculo;
 
-import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,13 +12,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "car_carro")
-@AttributeOverride(name = "id", column = @Column(name = "car_id"))
-@AttributeOverride(name = "marca", column = @Column(name = "car_marca"))
-@AttributeOverride(name = "modelo", column = @Column(name = "car_modelo"))
-@AttributeOverride(name = "cor", column = @Column(name = "car_cor"))
-@AttributeOverride(name = "combustivel", column = @Column(name = "car_combustivel"))
+@DiscriminatorValue("CARRO")
 public class Carro extends Veiculo{
 
     @Column(name = "car_numero_porta")

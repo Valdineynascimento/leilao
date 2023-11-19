@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import br.gov.fazenda.receita.leilao.entity.Item;
 
-@Repository
+@Repository 
 public interface ItemRepository extends JpaRepository<Item, Long>{
 
-    @Query("SELECT i FROM Item i WHERE i.lote.leilao.id = :idLeilao ORDER BY i.nome")
-    List<Item> findAllByLoteLeilaoIdOrderByNome(@Param("idLeilao") Long idLeilao);
+   // @Query("SELECT i FROM Item i WHERE i.item.leilao.id = :idLeilao ORDER BY i.nome")
+    //List<Item> findAllByItemLeilaoIdOrderByNome(@Param("idLeilao") Long idLeilao);
 
     
 }

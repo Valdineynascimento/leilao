@@ -1,60 +1,53 @@
 package br.gov.fazenda.receita.leilao.entity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.Data;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name = "itm_item")
 @Data
-public class Item implements Serializable{
+@DiscriminatorColumn(name = "NOME", discriminatorType = DiscriminatorType.STRING)
+@Entity
+public abstract class Item {
 
-	private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "itm_id")
+    protected Long id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "itm_id")
-	protected Long id;
+    @Column(name = "itm_maior_lance")
+    protected Double maiorLance;
 
-	@Column(name = "itm_tipo")
-	protected String tipo;
+    @Column(name = "itm_valor_inicial")
+    protected Double valorInicial;
 
-	@Column(name = "itm_nome")
-	protected String nome;
+    @ManyToOne // Relacionamento com Leilao
+    @JoinColumn(name = "itm_lei_id", nullable = false)
+    protected Leilao leilao;
 
-	@Column(name = "itm_descricao")
-	protected String descricao;
+    @Column(name = "vei_marca")
+    protected String marca;
 
-	@Column(name = "itm_maior_lance")
-	protected Double maiorLance;
+    @Column(name = "vei_modelo")
+    protected String modelo;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "itm_lot_id")
-	protected Lote lote;
+    @Column(name = "vei_cor")
+    protected String cor;
 
-	@OneToMany(mappedBy = "item")
-	protected List<Lance> lances;
+    @Column(name = "vei_combustivel")
+    protected String combustivel;
 
-	public Item(String tipo, String nome, String descricao, Lote lote) {
-		this.tipo = tipo;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.lote = lote;
-		this.maiorLance = null;
-		this.lances = new ArrayList<Lance>();
-	}
+    @OneToMany(mappedBy = "item") // Relacionamento com Lance
+    protected List<Lance> historicoLances = new ArrayList<>();
 
+    // getters e setters e construtores = @Data
 }
