@@ -18,7 +18,7 @@ insert into lei_leilao (lei_data_hora, lei_data_visitacao, lei_descricao, lei_st
 --    values (1500.00, 1300.00, 1);
 --insert into lot_lote (lot_lance, lot_valor_inicial, lot_lei_id)
 --    values (9000.00, 7500.00, 1);
---insert into itm_item (itm_tipo, itm_nome, itm_descricao, itm_lot_id)
---    values ('INFORMATICA', 'Notebook', 'I5 7ª geração',1);
---insert into itm_item (itm_tipo, itm_nome, itm_descricao, itm_lot_id)
---    values ('VEICULO', 'Corsa', 'Super, 5 portas, 96/97',1);
+insert into itm_item (tipo_item, itm_nome, itm_valor_inicial, itm_lei_id)
+    values ('NOTEBOOK', 'Notebook', 1300.00, 1);
+insert into itm_item (tipo_item, itm_nome, vei_marca, vei_modelo, itm_valor_inicial, itm_lei_id)
+    values ('CARRO', 'Corsa', 'GM', '96/97', 9000.00, 1);

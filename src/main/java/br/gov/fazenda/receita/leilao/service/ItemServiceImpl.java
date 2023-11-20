@@ -33,16 +33,13 @@ public class ItemServiceImpl implements ItemService {
 		return repo.findAll();
 	}
 	
-    /*@Override
+    @Override
     public Item novoItem(Item item) {
-        if(item.getNome() == null || 
-                item.getNome().isEmpty() ||
-                item.getDescricao() == null ||
-                item.getDescricao().isEmpty()) {
+        if(item == null) {
             throw new IllegalArgumentException("Parâmetros inválidos!");
         }
         return repo.save(item);
-    }*/	
+    }	
 	   
     @Override
     public Item atualizarItem(Item item) {

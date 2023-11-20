@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("DISPOSITIVO")
+@DiscriminatorValue("INFORMATICA")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "NOME", discriminatorType = DiscriminatorType.STRING)
 public abstract class DispositivosInformatica extends Item{

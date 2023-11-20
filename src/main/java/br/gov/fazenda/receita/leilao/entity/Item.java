@@ -1,5 +1,8 @@
 package br.gov.fazenda.receita.leilao.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -11,12 +14,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Table;
 
 @Data
-@DiscriminatorColumn(name = "NOME", discriminatorType = DiscriminatorType.STRING)
 @Entity
+@Table(name = "itm_item")
+@DiscriminatorColumn(name = "TIPO_ITEM", discriminatorType = DiscriminatorType.STRING)
 public abstract class Item {
 
     @Id
@@ -24,15 +27,14 @@ public abstract class Item {
     @Column(name = "itm_id")
     protected Long id;
 
+    @Column(name = "itm_nome")
+    protected String nome;
+
     @Column(name = "itm_maior_lance")
     protected Double maiorLance;
 
     @Column(name = "itm_valor_inicial")
     protected Double valorInicial;
-
-    @ManyToOne // Relacionamento com Leilao
-    @JoinColumn(name = "itm_lei_id", nullable = false)
-    protected Leilao leilao;
 
     @Column(name = "vei_marca")
     protected String marca;
@@ -48,6 +50,10 @@ public abstract class Item {
 
     @OneToMany(mappedBy = "item") // Relacionamento com Lance
     protected List<Lance> historicoLances = new ArrayList<>();
+
+    @ManyToOne // Relacionamento com Leilao
+    @JoinColumn(name = "itm_lei_id", nullable = false)
+    protected Leilao leilao;
 
     // getters e setters e construtores = @Data
 }

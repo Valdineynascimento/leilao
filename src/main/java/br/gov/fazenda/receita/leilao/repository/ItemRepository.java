@@ -12,9 +12,8 @@ import br.gov.fazenda.receita.leilao.entity.Item;
 @Repository 
 public interface ItemRepository extends JpaRepository<Item, Long>{
 
-   // @Query("SELECT i FROM Item i WHERE i.item.leilao.id = :idLeilao ORDER BY i.nome")
-    //List<Item> findAllByItemLeilaoIdOrderByNome(@Param("idLeilao") Long idLeilao);
-
+    @Query("SELECT i FROM Item i WHERE i.leilao.id = :idLeilao ORDER BY i.nome")
+    List<Item> findAllByLeilaoIdOrderByNome(@Param("idLeilao") Long idLeilao);
     
 }
 

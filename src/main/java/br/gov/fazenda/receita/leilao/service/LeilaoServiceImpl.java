@@ -19,8 +19,8 @@ public class LeilaoServiceImpl implements LeilaoService{
     @Autowired
     private LeilaoRepository leilaoRepo;
 
-	//@Autowired 
-    //private ItemRepository itemRepo;
+	@Autowired 
+    private ItemRepository itemRepo;
 
     @Override
     public Leilao buscarLeilaoPorId(Long id) {
@@ -68,10 +68,10 @@ public class LeilaoServiceImpl implements LeilaoService{
     	leilaoRepo.deleteById(id);    
     }
 
-	/*@Override
+	@Override
     public List<Item> buscarItensPorLeilaoOrdenadosPorNome(Long idLeilao) {
-        return itemRepo.findAllByItemLeilaoIdOrderByNome(idLeilao);
-    }*/
+        return itemRepo.findAllByLeilaoIdOrderByNome(idLeilao);
+    }
 
 	@Override
 	public List<Leilao> buscarTodosLeiloesOrdenadosPorDataInicial() {
